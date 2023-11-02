@@ -1,0 +1,65 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:flutter_splashscreen/personal_profile_screen.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('-------->initstate');
+
+    Timer(Duration(seconds: 5), () =>
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => PersonalProfileScreen()))
+    );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/splash.png',),
+                 fit: BoxFit.cover,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipOval(
+                  child: Image.asset('images/jk rowling.jpg',
+                  height: 150,
+                  width: 150,
+                  fit: BoxFit.cover,),
+                ),
+                Padding(padding: EdgeInsets.only(top: 5,bottom: 25),
+                child: Text(
+                    'To hurt is as human as to breathe',
+                style:TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.bold
+                ),),)
+              ],
+            ),
+          ),
+
+        ),
+      ),
+    );
+  }
+}
